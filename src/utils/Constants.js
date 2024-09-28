@@ -1,5 +1,5 @@
-// const API_URL = 'https://api.vdovareize.me'
-const API_URL = 'http://localhost:3000'
+const API_URL = 'https://api.vdovareize.me'
+// const API_URL = 'http://localhost:3000'
 
 export default {
     FIBONACCI_URL: `${API_URL}/clouds/fibonacci`,
