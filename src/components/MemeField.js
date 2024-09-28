@@ -16,8 +16,8 @@ const MemeField = () => {
         event.preventDefault()
         const memeStaticUrl = await StealingService.stealMeme(contentUrl)
 
-        downloadURI(memeStaticUrl, 'test')
-        return false
+        downloadURI(memeStaticUrl, 'test');
+        return false;
     }
 
     const contentUrlChangeHandler = (event) => {
