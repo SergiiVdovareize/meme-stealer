@@ -2,8 +2,6 @@ import { useState } from "react";
 import StealingService from "../utils/StealService";
 
 const MemeField = () => {
-    const [contentUrl, setContentUrl] = useState('')
-
     const downloadURI = (uri, name) => {
         var link = document.createElement("a");
         link.href = uri;
@@ -12,22 +10,23 @@ const MemeField = () => {
         document.body.removeChild(link);
       }
 
-    const steamMeme = async (event) => {
+    const stealMeme = async (event) => {
         event.preventDefault()
-        const memeStaticUrl = await StealingService.stealMeme(contentUrl)
+        const form = event.target;
+        const formData = new FormData(form);
+        const result = await StealingService.stealMeme(formData.get('source'))
+        if (result.success === true && result.data) {
+            downloadURI(result.data)
+        }
 
-        downloadURI(memeStaticUrl, 'test');
         return false;
     }
 
-    const contentUrlChangeHandler = (event) => {
-        setContentUrl(event.target.value);
-    }
-
-    return <div>
-        <form action="#" onSubmit={steamMeme}>
-            <input type="text" value={contentUrl} onChange={contentUrlChangeHandler}/>
-            <input type="submit" value='Steal'/>
+    return <div className='container'>
+        <form action="#" onSubmit={stealMeme}>
+            {/* <input type="text" className='meme-source' value={contentUrl} onChange={contentUrlChangeHandler}/> */}
+            <textarea rows={4} name='source' className='meme-source' placeholder="Paste url here"></textarea>
+            <input type="submit" className='meme-stealer' value='Steal'/>
         </form>
     </div>
 }

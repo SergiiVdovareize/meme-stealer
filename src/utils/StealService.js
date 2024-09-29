@@ -50,26 +50,8 @@ const getAsyncResult = async (url) => {
 }
 
 const StealingService = {
-    // async getFibonacciNumber(index) {
-    //     return await getResult(`${Constants.FIBONACCI_URL}/${index}`)
-    // },
-
-    // async getPrimeNumber(index) {
-    //     return await getResult(`${Constants.PRIME_URL}/${index}`)
-    // },
-
-    // async getArmstrongNumber(index) {
-    //     return await getResult(`${Constants.ARMSTRONG_URL}/${index}`)
-    // },
-
     async stealMeme(memeUrl) {
-        try {            
-            const data = await fetch(`${Constants.MEME_STEALER_URL}/${encodeURIComponent(memeUrl)}`)
-            const json = await data.json()
-            return json.url
-        } catch (error) {
-            console.log('error', error)
-        }
+        return await getResult(`${Constants.MEME_STEALER_URL}/${encodeURIComponent(memeUrl)}`)
     }
 }
 

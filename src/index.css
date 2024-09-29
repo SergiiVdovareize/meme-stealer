@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  padding: 0.5em;
+}
+
+.meme-source {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 20px;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif
+}
+
+.meme-stealer {
+  font-size: 20px; 
+  width: 100%;
+  padding: 0.3em;
+}
