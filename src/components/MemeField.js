@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import StealingService from "../utils/StealService";
 
-const defaultStealingButtonLabel = 'Steal'
+const defaultStealingButtonLabel = 'Steal me'
+
 const MemeField = () => {
     const [isStealing, setIsStealing] = useState(false)
     const [stealingButtonLabel, setStealingButtonLabel] = useState(defaultStealingButtonLabel)
@@ -50,7 +51,11 @@ const MemeField = () => {
         <form action="#" onSubmit={stealMeme}>
             {/* <input type="text" className='meme-source' value={contentUrl} onChange={contentUrlChangeHandler}/> */}
             <textarea rows={4} name='source' className='meme-source' placeholder="Paste url here"></textarea>
-            <input type="submit" disabled={isStealing} className='meme-stealer' value={stealingButtonLabel}/>
+            
+            <div className="stealing-buttons-wrapper">
+                <input type="reset" disabled={isStealing} className='stealing-button'/>
+                <input type="submit" disabled={isStealing} className='stealing-button meme-stealer' value={stealingButtonLabel}/>
+            </div>
         </form>
     </div>
 }
