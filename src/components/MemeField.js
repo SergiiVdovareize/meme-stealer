@@ -36,7 +36,7 @@ const MemeField = () => {
     const downloadURI = (uri, name) => {
         var link = document.createElement("a");
         link.href = uri;
-        // link.download
+        link.download = 'stolen-at-' + Date.now();
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -96,11 +96,12 @@ const MemeField = () => {
     const validateMeme = (url) => {
         const urlPatterns = {
             tiktok: /^https?:\/\/(www\.)?tiktok\.com\/@[\w.-]+\/video\/\d+/,
-            instagramPost: /^https?:\/\/(www\.)?instagram\.com\/p\/[\w-]+/,
-            instagramReel: /^https?:\/\/(www\.)?instagram\.com\/reels?\/[\w-]+/,
-            twitter: /^https?:\/\/(www\.)?twitter\.com\/[\w.-]+\/status\/\d+/,
-            youtubeVideo: /^https?:\/\/(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[\w-]+/,
-            youtubeShorts: /^https?:\/\/(www\.)?youtube\.com\/shorts\/[\w-]+/
+            instagram: /^https?:\/\/(www\.)?instagram\.com\/(reels?|p)\/[\w-]+/,
+            twitter: /^https?:\/\/(www\.)?(twitter|x)\.com\/[\w.-]+\/status\/\d+/,
+            youtube: /^https?:\/\/(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=|shorts\/)[\w-]+/,
+            facebook: /^https?:\/\/(www\.)?facebook\.com\/(reel\/|.+\/posts\/|watch\/\?v=)\d+/,
+            facebookShare: /^https?:\/\/(www\.)?facebook\.com\/share\/r\/[\w-]+/,
+            linkedin: /^https?:\/\/(www\.)?linkedin\.com\/posts\/[\w-]+/,
         };
 
         const trimmedUrl = url.trim();
@@ -109,24 +110,12 @@ const MemeField = () => {
         const isValid = Object.values(urlPatterns).some(pattern => pattern.test(trimmedUrl));
 
         if (!isValid) {
-            console.error('Invalid video URL. Please provide a valid TikTok, Instagram, Twitter, or YouTube video URL.', )
+            console.error('Invalid content URL')
             console.error(`You tried this. "${url}"`)
             return null
         }
 
-        const urlObj = new URL(trimmedUrl);
-
-        if (urlObj.hostname.includes('youtube.com')) {
-            if (urlObj.pathname.startsWith('/watch') && urlObj.searchParams.has('v')) {
-              urlObj.search = `?v=${urlObj.searchParams.get('v')}`;
-            } else if (urlObj.pathname.startsWith('/shorts')) {
-              urlObj.search = ''; // No query params needed for YouTube Shorts
-            }
-          } else {
-            urlObj.search = ''; // Remove query params for other platforms
-          }
-
-          return urlObj.toString();
+        return trimmedUrl;
     }
 
     const pasteMeme = async () => {
@@ -137,7 +126,6 @@ const MemeField = () => {
 
     return <div className='container'>
         <form action="#" onSubmit={stealMeme} className={isError ? 'error-form' : null}>
-            {/* <input type="text" className='meme-source' value={contentUrl} onChange={contentUrlChangeHandler}/> */}
             <textarea rows={4} name='source' className='meme-source' placeholder="Paste url here" value={urlValue} onChange={handleUrlChange}/>
             
             <div className="stealing-buttons-wrapper">
