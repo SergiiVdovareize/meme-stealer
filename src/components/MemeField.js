@@ -36,7 +36,7 @@ const MemeField = () => {
     const downloadURI = (uri, name) => {
         var link = document.createElement("a");
         link.href = uri;
-        link.download
+        // link.download
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
