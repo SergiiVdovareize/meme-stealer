@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f9ffee;
+  background-color: #edf8db;
 }
 
 code {
@@ -49,4 +49,10 @@ code {
 
 .meme-stealer {
   background-color: rgb(172, 221, 249);
+}
+
+.error-form textarea {
+  color: #800000;
+  border-color: #800000;
+  background-color: #ffefef;
 }
