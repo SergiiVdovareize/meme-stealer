@@ -14,12 +14,12 @@ const getResult = async (url) => {
 
         return {
             success: false,
-            message: json.message || 'unknown issue',
+            error: json.error || json.message || 'unknown issue',
         }
     } catch (error) {
         return {
             success: false,
-            message: error.message,
+            error: error.message,
         }
     }
 }
@@ -39,12 +39,12 @@ const getAsyncResult = async (url) => {
 
         return {
             success: false,
-            message: 'unknown issue',
+            error: json.error || json.message || 'unknown issue',
         }
     } catch (error) {
         return {
             success: false,
-            message: error.message,
+            error: error.message,
         }
     }
 }

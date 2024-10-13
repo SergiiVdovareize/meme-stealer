@@ -6,6 +6,7 @@ const defaultStealingButtonLabel = 'Steal me'
 const MemeField = () => {
     const [isStealing, setIsStealing] = useState(false)
     const [isError, setIsError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(null)
     const [urlValue, setUrlValue] = useState('')
     const [stealingButtonLabel, setStealingButtonLabel] = useState(defaultStealingButtonLabel)
 
@@ -25,12 +26,14 @@ const MemeField = () => {
 
     const handleUrlChange = (event) => {
         setIsError(false)
+        setErrorMessage(null)
         setUrlValue(event.target.value);
     }
 
     const resetForm = () => {
         setUrlValue('')
         setIsError(false)
+        setErrorMessage(null)
     }
 
     const downloadURI = (uri, name) => {
@@ -88,6 +91,8 @@ const MemeField = () => {
         setIsStealing(false)
         if (result.success === true && result.data) {
             downloadURI(result.data)
+        } else if (result.error) {
+            setErrorMessage(result.error);
         }
 
         return false;
@@ -103,6 +108,9 @@ const MemeField = () => {
             facebookShare: /^https?:\/\/(www\.)?facebook\.com\/share\/r\/[\w-]+/,
             linkedin: /^https?:\/\/(www\.)?linkedin\.com\/posts\/[\w-]+/,
         };
+
+        // TODO: ADD - https://fb.watch/u_MnTouOL5/
+
 
         const trimmedUrl = url.trim();
 
@@ -133,6 +141,12 @@ const MemeField = () => {
                 <input type="button" disabled={isStealing} className='stealing-button' value='Paste' onClick={pasteMeme}/>
                 <input type="submit" disabled={isStealing} className='stealing-button meme-stealer' value={stealingButtonLabel}/>
             </div>
+
+            { errorMessage &&
+                <div className="error">
+                    {errorMessage}
+                </div>
+            }
         </form>
     </div>
 }
