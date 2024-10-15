@@ -80,6 +80,7 @@ const MemeField = () => {
     const stealMeme = async (event) => {
         event.preventDefault()
         
+        setErrorMessage(false)
         const sanitizedSource = validateMeme(urlValue)
         if (!sanitizedSource) {
             setIsError(true)
