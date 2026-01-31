@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import StealingService from "../utils/StealService";
 import { snapsave } from "snapsave-media-downloader";
+import { instagramGetUrl } from "instagram-url-direct"
 
 const defaultStealingButtonLabel = 'Steal me'
 
@@ -81,11 +82,6 @@ const MemeField = () => {
     const stealMeme = async (event) => {
         event.preventDefault()
 
-        const download = await snapsave("https://www.instagram.com/p/C51YHfWJwHK/");
-
-        console.log(download);
-        return;
-        
         setErrorMessage(false)
         const sanitizedSource = validateMeme(urlValue)
         if (!sanitizedSource) {
@@ -97,6 +93,7 @@ const MemeField = () => {
         const result = await StealingService.stealMeme(sanitizedSource)
         setIsStealing(false)
         if (result.success === true && result.data) {
+            console.log('result', result)
             downloadURI(result.data)
         } else if (result.error) {
             setErrorMessage(result.error);

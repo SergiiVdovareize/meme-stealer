@@ -4,18 +4,20 @@ const getResult = async (url) => {
     try {
         const data = await fetch(url)
         const json = await data.json()
-        if (json.type === 'sync') {
-            return json.data;
-        }
+        return json;
 
-        if (json.type === 'async') {
-            return await getAsyncResult(`${Constants.RESULT_URL}/${json.data}`)
-        }
+        // if (json.type === 'sync') {
+        //     return json.data;
+        // }
 
-        return {
-            success: false,
-            error: json.error || json.message || 'unknown issue',
-        }
+        // if (json.type === 'async') {
+        //     return await getAsyncResult(`${Constants.RESULT_URL}/${json.data}`)
+        // }
+
+        // return {
+        //     success: false,
+        //     error: json.error || json.message || 'unknown issue',
+        // }
     } catch (error) {
         return {
             success: false,
