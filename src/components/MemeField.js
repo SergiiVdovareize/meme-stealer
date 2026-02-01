@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import StealingService from "../utils/StealService";
-import { snapsave } from "snapsave-media-downloader";
-import { instagramGetUrl } from "instagram-url-direct"
 
 const defaultStealingButtonLabel = 'Steal me'
 
