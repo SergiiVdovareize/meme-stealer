@@ -12,11 +12,12 @@ try {
   console.log('Running: npm version patch --no-commit-hooks -m "chore(release): %s"');
   execSync('npm version patch --no-commit-hooks -m "chore(release): %s"', { stdio: 'inherit' });
 
-  // Push commit and tag without re-triggering hooks
-  console.log('Pushing commit and tags: git push --no-verify --follow-tags');
-  execSync('git push --no-verify --follow-tags', { stdio: 'inherit' });
-
-  console.log('Version bumped and tags pushed successfully.');
+  // NOTE: Do NOT push inside the pre-push hook to avoid race conditions.
+  // Instead, exit non‑zero to abort the ongoing push so the user can re-run it and include the new commit & tag.
+  console.log('\nVersion bumped. The pre-push has been aborted so you can push the new version commit and tag.')
+  console.log('Run: git push --follow-tags')
+  // Signal failure to abort the current push — the user should re-run `git push`.
+  process.exit(1);
 } catch (e) {
   console.error('Version bump failed:', e.message);
   process.exit(1);
