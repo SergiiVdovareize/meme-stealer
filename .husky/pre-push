@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Bump patch version before pushing (skips in CI)
+npm run bump-patch || exit 1

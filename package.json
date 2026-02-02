@@ -1,6 +1,6 @@
 {
   "name": "reactive-pages",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "homepage": "https://meme-stealer.vdovareize.me",
   "private": true,
   "dependencies": {
@@ -26,7 +26,9 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "postdeploy": "echo 'Reactive deployment initialized'",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org home-sr9 --project meme-stealer ./build/static && sentry-cli sourcemaps upload --org home-sr9 --project meme-stealer ./build/static"
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org home-sr9 --project meme-stealer ./build/static && sentry-cli sourcemaps upload --org home-sr9 --project meme-stealer ./build/static",
+    "bump-patch": "node scripts/bump-patch.js",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +51,7 @@
   "devDependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "framer-motion": "^11.3.5"
+    "framer-motion": "^11.3.5",
+    "husky": "^8.0.3"
   }
 }
