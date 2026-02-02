@@ -68,7 +68,7 @@ code {
   background-color: var(--panel);
   color: var(--text);
   cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.02);
+  border: 1px solid var(--panel);
   box-shadow: 0 6px 0 var(--btn-shadow);
   transition: transform 120ms ease, box-shadow 160ms ease;
 } 
@@ -79,13 +79,13 @@ code {
 }
 
 .stealing-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  /* box-shadow: 0 10px 30px rgba(0,0,0,0.5); */
+  transform: translateY(-1px);
+  box-shadow: 0 7px 0 var(--btn-shadow);
 } 
 
 .stealing-button:active:not(:disabled) {
   transform: translateY(3px);
-  /* box-shadow: 0 10px 30px rgba(0,0,0,0.5); */
+  box-shadow: 0 4px 0 var(--btn-shadow);
 } 
 
 /* Primary accent button for stealing */
@@ -94,13 +94,17 @@ code {
   color: white !important;
   border: none;
   box-shadow: 0 6px 0 var(--accent-shadow);
-  border-bottom: 3px solid rgba(0,0,0,0.45);
+  /* border-bottom: 3px solid rgba(0,0,0,0.45); */
 }
 
-/* .meme-stealer:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(3,32,80,0.45);
-}  */
+.meme-stealer:hover:not(:disabled) {
+  box-shadow: 0 7px 0 var(--accent-shadow);
+} 
+
+.meme-stealer:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 4px 0 var(--accent-shadow);
+}
 
 .error-form textarea {
   color: var(--text);
