@@ -1,7 +1,7 @@
 {
   "name": "reactive-pages",
-  "version": "0.1.6",
-  "homepage": "https://meme-stealer.vdovareize.me",
+  "version": "0.2.1",
+  "homepage": "https://snip.vdovareize.me",
   "private": true,
   "scripts": {
     "start": "PORT=3003 react-scripts start",
