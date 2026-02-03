@@ -3,6 +3,16 @@
   "version": "0.1.6",
   "homepage": "https://meme-stealer.vdovareize.me",
   "private": true,
+  "scripts": {
+    "start": "PORT=3003 react-scripts start",
+    "build": "react-scripts build && npm run sentry:sourcemaps && npm run sentry:sourcemaps",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
+    "postdeploy": "echo 'Reactive deployment initialized'",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org home-sr9 --project meme-stealer ./build/static && sentry-cli sourcemaps upload --org home-sr9 --project meme-stealer ./build/static",
+  },
   "dependencies": {
     "@sentry/cli": "^2.36.4",
     "@sentry/react": "^8.32.0",
@@ -17,18 +27,6 @@
     "react-scripts": "5.0.1",
     "snapsave-media-downloader": "^2.3.4",
     "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "PORT=3003 react-scripts start",
-    "build": "react-scripts build && npm run sentry:sourcemaps && npm run sentry:sourcemaps",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
-    "postdeploy": "echo 'Reactive deployment initialized'",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org home-sr9 --project meme-stealer ./build/static && sentry-cli sourcemaps upload --org home-sr9 --project meme-stealer ./build/static",
-    "bump-patch": "node scripts/bump-patch.js",
-    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +50,5 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "framer-motion": "^11.3.5",
-    "husky": "^8.0.3"
   }
 }
