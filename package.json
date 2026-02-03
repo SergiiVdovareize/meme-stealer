@@ -11,21 +11,18 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "postdeploy": "echo 'Reactive deployment initialized'",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org home-sr9 --project meme-stealer ./build/static && sentry-cli sourcemaps upload --org home-sr9 --project meme-stealer ./build/static",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org home-sr9 --project meme-stealer ./build/static && sentry-cli sourcemaps upload --org home-sr9 --project meme-stealer ./build/static"
   },
   "dependencies": {
-    "@sentry/cli": "^2.36.4",
-    "@sentry/react": "^8.32.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "btch-downloader": "^6.0.25",
-    "gh-pages": "^6.1.1",
-    "instagram-url-direct": "^2.0.7",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "snapsave-media-downloader": "^2.3.4",
+    "@sentry/cli": "^3.1.0",
+    "@sentry/react": "^10.38.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "gh-pages": "^6.3.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "eslintConfig": {
@@ -47,8 +44,8 @@
     ]
   },
   "devDependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "framer-motion": "^11.3.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "framer-motion": "^12.30.0"
   }
 }
