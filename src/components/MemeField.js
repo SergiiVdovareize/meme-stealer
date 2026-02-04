@@ -130,8 +130,8 @@ const MemeField = () => {
 
     const pasteMeme = async () => {
         const text = await navigator.clipboard.readText();
-        setUrlValue(text)
-        setIsError(false)
+        setUrlValue(text);
+        setIsError(false);
     }
 
     return <div className='container'>
