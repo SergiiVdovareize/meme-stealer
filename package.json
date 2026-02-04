@@ -1,6 +1,6 @@
 {
   "name": "Snip",
-  "version": "0.2.48",
+  "version": "0.2.49",
   "homepage": "https://snip.vdovareize.me",
   "private": true,
   "scripts": {
@@ -11,7 +11,8 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "postdeploy": "echo 'Reactive deployment initialized'",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org home-sr9 --project meme-stealer ./build/static && sentry-cli sourcemaps upload --org home-sr9 --project meme-stealer ./build/static"
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org home-sr9 --project meme-stealer ./build/static && sentry-cli sourcemaps upload --org home-sr9 --project meme-stealer ./build/static",
+    "bump": "node scripts/bump-version.js"
   },
   "dependencies": {
     "@sentry/cli": "^3.1.0",
